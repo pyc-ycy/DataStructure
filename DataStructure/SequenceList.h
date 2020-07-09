@@ -91,6 +91,26 @@ int getIndex(SeqList list, int value)
 		return NAN;
 	return i + 1;
 }
+int getPreByValue(SeqList list, int value)
+{
+	int cur = getIndex(list, value);
+	if (cur == 0)
+	{
+		cout << "The value is no exist!" << endl;
+		return NAN;
+	}
+	return list.data[cur - 2];
+}
+int getLastByVlue(SeqList list, int value)
+{
+	int cur = getIndex(list, value);
+	if (cur == 0)
+	{
+		cout << "The value is no exist!" << endl;
+		return NAN;
+	}
+	return list.data[cur];
+}
 // 修改指定下标的元素
 void change(SeqList& list, int index, int value)
 {
@@ -161,6 +181,12 @@ void display(SeqList list)
 	for (int i = 0; i < list.length; i++)
 		cout << list.data[i] << " ";
 	cout << endl;
+}
+bool empty(SeqList list)
+{
+	if (list.length == 0)
+		return true;
+	return false;
 }
 void destroy(SeqList& list)
 {

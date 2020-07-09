@@ -18,6 +18,8 @@ int main()
 	cout << getValue(list, 24) << endl;
 	cout << getIndex(list, 23) << endl;
 	change(list, 4, 5);
+	int t = getPreByValue(list, 27);
+	cout << t << endl;
 	delValue(list, 3);
 	delIndex(list, 5);
 	AscSort(list);
