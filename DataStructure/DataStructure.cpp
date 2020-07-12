@@ -10,25 +10,29 @@ int main()
 	int a[] = { 21, 2, 3, 4, 27, 8, 10 };
 	int len = sizeof(a) / sizeof(int);
 	initList(list, a, len);
-	display(list);
 	AddValue(list, 17);
-	display(list);
 	InsertValue(list, 23, len + 1);
-	display(list);
-	cout << getValue(list, 24) << endl;
-	cout << getIndex(list, 23) << endl;
 	change(list, 4, 5);
-	int t = getPreByValue(list, 27);
-	cout << t << endl;
-	delValue(list, 3);
-	delIndex(list, 5);
 	AscSort(list);
+	display(list);
+	SearchExchangeInsertASC(list, 21);
 	display(list);
 	DesSort(list);
 	display(list);
-	destroy(list);
-	cout << list.data << " " << list.length << " " << list.Maxsize << endl;
+	SearchExchangeInsertDSC(list, 6);
 	display(list);
+	int B[] = { 11, 13, 15, 17, 19 };
+	int A[] = { 2, 4, 6, 8, 20 };
+	int m = MSearch(A, B, 5);
+	cout << m << endl;
+	int arr[] = { 0,5,5,3,5,7,5,5 };
+	int t = Majority(arr, 8);
+	cout << t << endl;
+	int c[] = { -5,3,2,3 };
+	int d[] = { 1,2,3 };
+	int t1 = findMissMin(c, 4);
+	int t2 = findMissMin(d, 3);
+	cout << t1 << " " << t2 << endl;
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
