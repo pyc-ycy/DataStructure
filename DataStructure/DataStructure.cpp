@@ -2,37 +2,26 @@
 //
 
 #include <iostream>
-#include "SequenceList.h"
+#include "LNode.h"
 using namespace std;
 int main()
 {
-	SeqList list = create();
 	int a[] = { 21, 2, 3, 4, 27, 8, 10 };
-	int len = sizeof(a) / sizeof(int);
-	initList(list, a, len);
-	AddValue(list, 17);
-	InsertValue(list, 23, len + 1);
-	change(list, 4, 5);
-	AscSort(list);
-	display(list);
-	SearchExchangeInsertASC(list, 21);
-	display(list);
-	DesSort(list);
-	display(list);
-	SearchExchangeInsertDSC(list, 6);
-	display(list);
-	int B[] = { 11, 13, 15, 17, 19 };
-	int A[] = { 2, 4, 6, 8, 20 };
-	int m = MSearch(A, B, 5);
-	cout << m << endl;
-	int arr[] = { 0,5,5,3,5,7,5,5 };
-	int t = Majority(arr, 8);
-	cout << t << endl;
-	int c[] = { -5,3,2,3 };
-	int d[] = { 1,2,3 };
-	int t1 = findMissMin(c, 4);
-	int t2 = findMissMin(d, 3);
-	cout << t1 << " " << t2 << endl;
+	LNode list;
+	list.init(a, 7);
+	cout << list.getValue(3) << endl;
+	cout << list.length() << endl;
+	list.insert(5, 100);
+	list.insert(8, 50);
+	list.show();
+	LNode* t = list.getNext(3);
+	cout << t->value() << endl;
+	list.del(3);
+	list.append(25);
+	list.change(2, 7);
+	list.show();
+	list.Ascending();
+	list.show();
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
