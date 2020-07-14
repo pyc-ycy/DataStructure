@@ -2,25 +2,16 @@
 //
 
 #include <iostream>
-#include "LNode.h"
+#include "DNode.h"
 using namespace std;
 int main()
 {
 	int a[] = { 21, 2, 3, 4, 27, 8, 10 };
-	LNode list;
+	DNode list;
 	list.init(a, 7);
-	cout << list.getValue(3) << endl;
-	cout << list.length() << endl;
-	list.insert(5, 100);
-	list.insert(8, 50);
+	list.insert(5, 5);
 	list.show();
-	LNode* t = list.getNext(3);
-	cout << t->value() << endl;
-	list.del(3);
-	list.append(25);
-	list.change(2, 7);
-	list.show();
-	list.Ascending();
+	list.del(4);
 	list.show();
 }
 
