@@ -31,7 +31,56 @@ public:
 	void insertSort();
 	bool RangeDel(int min, int max);
 	LNode* searchCommon(LNode* L1);
+	LNode* divide();
+	void DelSame();
 };
+//去掉增序链表中值相同的多余元素，即去重
+void LNode::DelSame()
+{
+	LNode* p = this->next, * q;
+	if (p == NULL)
+		return;
+	while (p->next != NULL)
+	{
+		q = p->next;
+		if (p->data == q->data)
+		{
+			p->next = q->next;
+			free(q);
+		}
+		else
+		{
+			p = p->next;
+		}
+	}
+}
+// 将一个链表按照序号的奇偶分别拆成两个链表
+LNode* LNode::divide()
+{
+	int i = 0;
+	LNode* B = new LNode();
+	LNode* ra = this, * rb = B;
+	LNode* p = this->next;
+	this->next = NULL;
+	while (p != NULL)
+	{
+		i++;
+		if (i % 2 == 0)
+		{
+			rb->next = p;
+			rb = p;
+		}
+		else
+		{
+			ra->next = p;
+			ra = p;
+		}
+		p = p->next;
+	}
+	ra->next = NULL;
+	rb->next = NULL;
+	return B;
+}
 //寻找两个链表的公共结点
 LNode* LNode::searchCommon(LNode* L1)
 {

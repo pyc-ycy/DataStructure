@@ -6,15 +6,17 @@
 using namespace std;
 int main()
 {
-	int a[] = { 21, 2, 3, 4, 27, 8, 10 };
+	int a[] = { 21, 2, 3, 3, 3,4, 27, 8, 10 };
 	LNode list;
-	list.init(a, 7);
+	list.init(a, 9);
 	list.show();
 	ReversePrint(&list);
 	cout << endl;
 	list.reverse();
 	list.show();
 	list.insertSort();
+	list.show();
+	list.DelSame();
 	list.show();
 }
 
