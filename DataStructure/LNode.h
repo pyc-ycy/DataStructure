@@ -24,7 +24,151 @@ public:
 	bool append(int value);
 	bool change(int index, int value);
 	void Ascending();
+	bool DelX(int x);
+	friend void ReversePrint(LNode* L);
+	bool DelMin();
+	void reverse();
+	void insertSort();
+	bool RangeDel(int min, int max);
+	LNode* searchCommon(LNode* L1);
 };
+//寻找两个链表的公共结点
+LNode* LNode::searchCommon(LNode* L1)
+{
+	int len1 = this->length();
+	int len2 = L1->length();
+	int dist;
+	LNode* longL, * shortL;
+	if (len1 > len2)
+	{
+		longL = this->next;
+		shortL = L1->next;
+		dist = len1 - len2;
+	}
+	else {
+		longL = L1->next;
+		shortL = this->next;
+		dist = len2 - len1;
+	}
+	while (dist--)
+		longL = longL->next;
+	while (longL != NULL)
+	{
+		if (longL == shortL)
+			return longL;
+		else {
+			longL = longL->next;
+			shortL = shortL->next;
+		}
+	}
+	return NULL;
+}
+// 删除值在指定范围内的元素的值
+bool LNode::RangeDel(int min, int max)
+{
+	if (this->isEmpty())
+		return false;
+	LNode* pre = this, * p = this->next;
+	while (p != NULL)
+	{
+		if (p->data > min && p->data < max)
+		{
+			pre->next = p->next;
+			free(p);
+			p = pre->next;
+		}
+		else {
+			pre = p;
+			p = p->next;
+		}
+	}
+}
+//使用插入排序使链表增序
+void LNode::insertSort()
+{
+	LNode* p = this->next, * pre;
+	LNode* r = p->next;
+	p->next = NULL;
+	p = r;
+	while (p != NULL)
+	{
+		r = p->next;
+		pre = this;
+		while (pre->next != NULL && pre->next->data < p->data)
+			pre = pre->next;
+		p->next = pre->next;
+		pre->next = p;
+		p = r;
+	}
+}
+//就地逆置链表
+void LNode::reverse()
+{
+	// r 为 p 的后继，用于防止断链
+	LNode* p, * r;
+	p = this->next;
+	this->next = NULL;
+	while (p != NULL)
+	{
+		r = p->next;
+		p->next = this->next;
+		this->next = p;
+		p = r;
+	}
+}
+//删除链表中的最小值
+bool LNode::DelMin()
+{
+	if (this->isEmpty())
+		return false;
+	// 工作指针
+	LNode* pre = this, * p = pre->next;
+	// 存储最小值的相关指针
+	LNode* minpre = pre, * minp = p;
+	while (p != NULL)
+	{
+		if (p->data < minp->data)
+		{
+			minp = p;
+			minpre = pre;
+		}
+		pre = p;
+		p = p->next;
+	}
+	minpre->next = minp->next;
+	free(minp);
+	return true;
+}
+//逆序输出链表
+void ReversePrint(LNode* L)
+{
+	if (L->next != NULL)
+		ReversePrint(L->next);
+	if (L != NULL && L->data != 0)
+		cout << L->data << " ";
+}
+// 删除链表中所有值等于x的结点
+bool LNode::DelX(int x)
+{
+	if (this->isEmpty())
+		return false;
+	LNode* p = this->next, * pre = this, * q;
+	while (p != NULL)
+	{
+		if (p->data == x)
+		{
+			q = p;
+			p = p->next;
+			pre->next = p;
+			free(q);
+		}
+		else {
+			pre = p;
+			p = p->next;
+		}
+	}
+	return true;
+}
 //创建单链表
 LNode::LNode()
 {

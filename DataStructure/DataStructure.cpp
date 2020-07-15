@@ -2,16 +2,19 @@
 //
 
 #include <iostream>
-#include "DNode.h"
+#include "LNode.h"
 using namespace std;
 int main()
 {
 	int a[] = { 21, 2, 3, 4, 27, 8, 10 };
-	DNode list;
+	LNode list;
 	list.init(a, 7);
-	list.insert(5, 5);
 	list.show();
-	list.del(4);
+	ReversePrint(&list);
+	cout << endl;
+	list.reverse();
+	list.show();
+	list.insertSort();
 	list.show();
 }
 
