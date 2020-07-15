@@ -7,17 +7,18 @@ using namespace std;
 int main()
 {
 	int a[] = { 21, 2, 3, 3, 3,4, 27, 8, 10 };
+	int b[] = { 14, 2, 3, 4, 6, 8, 7 };
 	LNode list;
 	list.init(a, 9);
-	list.show();
-	ReversePrint(&list);
-	cout << endl;
-	list.reverse();
-	list.show();
 	list.insertSort();
 	list.show();
-	list.DelSame();
-	list.show();
+	LNode* l = new LNode();
+	l->init(b, 7);
+	l->insertSort();
+	l->show();
+	LNode* t = new LNode();
+	list.getCommon(l, t);
+	t->show();
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

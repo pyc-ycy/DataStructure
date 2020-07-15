@@ -33,7 +33,65 @@ public:
 	LNode* searchCommon(LNode* L1);
 	LNode* divide();
 	void DelSame();
+	void merge(LNode* l);
+	void getCommon(LNode* l, LNode*& newL);
 };
+// 提取两个链表中的公共元素作为一个新链表返回,并且不破坏原来的两个链表
+void LNode::getCommon(LNode* l, LNode*& newL)
+{
+	LNode* p = this->next, * q = l->next, * r, * s;
+	r = newL;
+	while (p != NULL && q != NULL)
+	{
+		if (p->data < q->data)
+			p = p->next;
+		else if (p->data > q->data)
+			q = q->next;
+		else if (p->data == q->data)
+		{
+			s = new LNode();
+			s->data = p->data;
+			r->next = s;
+			r = s;
+			p = p->next;
+			q = q->next;
+		}
+	}
+	r->next = NULL;
+}
+
+// 将两个递增顺序的链表合并为一个递增顺序的新链表
+void LNode::merge(LNode* l)
+{
+	LNode* r, * pa = this->next, * pb = l->next;
+	this->next = NULL;
+	while (pa && pb)
+	{
+		if (pa->data <= pb->data)
+		{
+			r = pa->next;
+			pa->next = this->next;
+			this->next = pa;
+			pa = r;
+		}
+		else
+		{
+			r = pb->next;
+			pb->next = this->next;
+			this->next = pb;
+			pb = r;
+		}
+	}
+	if (pa)
+		pb = pa;
+	while (pb)
+	{
+		r = pb->next;
+		pb->next = this->next;
+		this->next = pb;
+		pb = r;
+	}
+}
 //去掉增序链表中值相同的多余元素，即去重
 void LNode::DelSame()
 {
