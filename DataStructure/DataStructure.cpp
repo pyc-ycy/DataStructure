@@ -16,9 +16,8 @@ int main()
 	l->init(b, 7);
 	l->insertSort();
 	l->show();
-	LNode* t = new LNode();
-	list.getCommon(l, t);
-	t->show();
+	list.changeList();
+	list.show();
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

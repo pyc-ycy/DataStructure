@@ -35,7 +35,86 @@ public:
 	void DelSame();
 	void merge(LNode* l);
 	void getCommon(LNode* l, LNode*& newL);
+	int searchK(int k);
+	void delSameAbsolut();
+	void changeList();
 };
+// 将链表从(a1,a2,a3...an)变成(a1,an,a2,an-1....)
+void LNode::changeList()
+{
+	LNode* p, * q, * r, * s;
+	p = q = this;
+	while (q->next != NULL)
+	{
+		p = p->next;
+		q = q->next;
+		if (q->next != NULL)q = q->next;
+	}
+	q = p->next;
+	p->next = NULL;
+	while (q != NULL)
+	{
+		r = q->next;
+		q->next = p->next;
+		p->next = q;
+		q = r;
+	}
+	s = this->next;
+	q = p->next;
+	p->next = NULL;
+	while (q != NULL)
+	{
+		r = q->next;
+		q->next = s->next;
+		s->next = q;
+		s = q->next;
+		q = r;
+	}
+}
+// 从链表中删除绝对值相同的元素，保留第一个元素
+void LNode::delSameAbsolut()
+{
+	LNode* p = this, * r;
+	int* q, m;
+	int n = this->length();
+	q = new int[n + 1];
+	for (int i = 0; i < n + 1; i++)
+		*(q + i) = 0;
+	while (p->next != NULL)
+	{
+		m = p->next->data > 0 ? p->next->data : -(p->next->data);
+		if (*(q + m) == 0)
+		{
+			*(q + m) = 1;
+			p = p->next;
+		}
+		else
+		{
+			r = p->next;
+			p->next = r->next;
+			free(r);
+		}
+	}
+	free(q);
+}
+// 查找链表中倒数第k个元素的值
+int LNode::searchK(int k)
+{
+	LNode* p = this->next, * q = this->next;
+	int count = 0;
+	while (p != NULL)
+	{
+		if (count < k)count++;
+		else q = q->next;
+		p = p->next;
+	}
+	if (count < k)
+		return 0;
+	else {
+		cout << q->data << endl;
+		return 1;
+	}
+}
 // 提取两个链表中的公共元素作为一个新链表返回,并且不破坏原来的两个链表
 void LNode::getCommon(LNode* l, LNode*& newL)
 {
