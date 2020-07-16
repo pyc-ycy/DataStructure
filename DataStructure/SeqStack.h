@@ -32,6 +32,4 @@ public:
 	void StackTraverse();
 	// Çå¿ÕÕ»
 	bool clear();
-	// Ïú»ÙÕ»
-	bool destroy();
 };

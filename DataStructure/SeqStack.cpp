@@ -93,16 +93,3 @@ bool SeqStack::clear()
 	length = 0;
 	return true;
 }
-bool SeqStack::destroy()
-{
-	if (this->data == NULL)
-	{
-		cout << "栈不存在或未初始化！" << endl;
-		return false;
-	}
-	int* t = this->data;
-	this->data = NULL;
-	top = -1;
-	length = 0;
-	free(t);
-}

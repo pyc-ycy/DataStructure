@@ -2,22 +2,22 @@
 //
 
 #include <iostream>
-#include "LNode.h"
+#include "SeqStack.h"
 using namespace std;
 int main()
 {
-	int a[] = { 21, 2, 3, 3, 3,4, 27, 8, 10 };
-	int b[] = { 14, 2, 3, 4, 6, 8, 7 };
-	LNode list;
-	list.init(a, 9);
-	list.insertSort();
-	list.show();
-	LNode* l = new LNode();
-	l->init(b, 7);
-	l->insertSort();
-	l->show();
-	list.changeList();
-	list.show();
+	int a[] = { 21, 2, 3, 4, 27, 8, 10 };
+	SeqStack s;
+	s.InitStack(a, 7);
+	s.StackTraverse();
+	cout << s.StackLength() << " " << s.StackEmpty() << endl;
+	s.push(23);
+	s.StackTraverse();
+	int t = 0;
+	s.pop(t);
+	s.StackTraverse();
+	s.clear();
+	cout << s.StackEmpty() << endl;
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
