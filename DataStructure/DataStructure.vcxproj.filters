@@ -18,6 +18,9 @@
     <ClCompile Include="DataStructure.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="SeqStack.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SequenceList.h">
@@ -27,6 +30,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="DNode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SeqStack.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

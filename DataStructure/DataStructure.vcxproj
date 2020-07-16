@@ -140,10 +140,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DataStructure.cpp" />
+    <ClCompile Include="SeqStack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DNode.h" />
     <ClInclude Include="LNode.h" />
+    <ClInclude Include="SeqStack.h" />
     <ClInclude Include="SequenceList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
