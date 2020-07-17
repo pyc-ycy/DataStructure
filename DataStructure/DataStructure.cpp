@@ -2,22 +2,24 @@
 //
 
 #include <iostream>
-#include "SeqStack.h"
+#include "LinkStack.h"
 using namespace std;
 int main()
 {
 	int a[] = { 21, 2, 3, 4, 27, 8, 10 };
-	SeqStack s;
-	s.InitStack(a, 7);
-	s.StackTraverse();
-	cout << s.StackLength() << " " << s.StackEmpty() << endl;
-	s.push(23);
-	s.StackTraverse();
-	int t = 0;
-	s.pop(t);
-	s.StackTraverse();
-	s.clear();
-	cout << s.StackEmpty() << endl;
+	LinkStack ls;
+	create(ls);
+	if (init(ls, a, 7))
+	{
+		traverse(ls);
+	}
+	cout << endl;
+	cout << getTop(ls) << endl;
+	push(ls, 15);
+	traverse(ls);
+	int l;
+	int t = pop(ls, l);
+	traverse(ls);
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
