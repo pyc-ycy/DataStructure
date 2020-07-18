@@ -15,7 +15,6 @@ private:
 	int  len;
 public:
 	SeqQueue();
-	~SeqQueue();
 	bool init(int a[], int len);
 	bool isEmpty();
 	bool isFull();
@@ -32,13 +31,6 @@ SeqQueue::SeqQueue()
 	data = new int[maxsize];
 	front = rear = 0;
 	len = 0;
-}
-// 销毁队列
-SeqQueue::~SeqQueue()
-{
-	len = 0;
-	front = rear = 0;
-	delete[] data;
 }
 // 初始化队列
 bool SeqQueue::init(int a[], int len)
