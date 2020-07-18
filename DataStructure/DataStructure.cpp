@@ -2,24 +2,20 @@
 //
 
 #include <iostream>
-#include "SeqQueue.h"
+#include "LinkQueue.h"
 using namespace std;
 int main()
 {
 	int a[] = { 21, 2, 3, 4, 27, 8, 10 };
-	SeqQueue sq;
-	sq.init(a, 7);
-	sq.traverse();
-	sq.EnQueue(18);
-	sq.traverse();
-	sq.EnQueue(20);
-	sq.EnQueue(25);
-	cout << sq.getLen() << endl;
-	int t = 0;
-	sq.DeQueue(t);
-	sq.traverse();
-	cout << sq.getLen() << endl;
-	cout << sq.isFull() << endl;
+	LinkQueue lq;
+	lq.init(a, 7);
+	lq.traverse();
+	cout << lq.getLen() << " " << lq.getTop() << endl;
+	lq.enQueue(18);
+	lq.enQueue(34);
+	int e = 0;
+	lq.deQueue(e);
+	lq.traverse();
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
