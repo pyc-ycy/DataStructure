@@ -2,24 +2,24 @@
 //
 
 #include <iostream>
-#include "LinkStack.h"
+#include "SeqQueue.h"
 using namespace std;
 int main()
 {
 	int a[] = { 21, 2, 3, 4, 27, 8, 10 };
-	LinkStack ls;
-	create(ls);
-	if (init(ls, a, 7))
-	{
-		traverse(ls);
-	}
-	cout << endl;
-	cout << getTop(ls) << endl;
-	push(ls, 15);
-	traverse(ls);
-	int l;
-	int t = pop(ls, l);
-	traverse(ls);
+	SeqQueue sq;
+	sq.init(a, 7);
+	sq.traverse();
+	sq.EnQueue(18);
+	sq.traverse();
+	sq.EnQueue(20);
+	sq.EnQueue(25);
+	cout << sq.getLen() << endl;
+	int t = 0;
+	sq.DeQueue(t);
+	sq.traverse();
+	cout << sq.getLen() << endl;
+	cout << sq.isFull() << endl;
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

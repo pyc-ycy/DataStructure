@@ -38,5 +38,8 @@
     <ClInclude Include="LinkStack.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="SeqQueue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

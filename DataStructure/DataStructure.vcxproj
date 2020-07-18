@@ -146,6 +146,7 @@
     <ClInclude Include="DNode.h" />
     <ClInclude Include="LinkStack.h" />
     <ClInclude Include="LNode.h" />
+    <ClInclude Include="SeqQueue.h" />
     <ClInclude Include="SeqStack.h" />
     <ClInclude Include="SequenceList.h" />
   </ItemGroup>
