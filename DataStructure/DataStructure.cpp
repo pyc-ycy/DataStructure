@@ -2,20 +2,32 @@
 //
 
 #include <iostream>
-#include "LinkQueue.h"
+#include<string>
+#include "HeapStr.h"
 using namespace std;
 int main()
 {
-	int a[] = { 21, 2, 3, 4, 27, 8, 10 };
-	LinkQueue lq;
-	lq.init(a, 7);
-	lq.traverse();
-	cout << lq.getLen() << " " << lq.getTop() << endl;
-	lq.enQueue(18);
-	lq.enQueue(34);
-	int e = 0;
-	lq.deQueue(e);
-	lq.traverse();
+	//int a[] = { 21, 2, 3, 4, 27, 8, 10 };
+	string a = "abcdefgh";
+	string b = "abcde";
+	string c = "a";
+	HeapStr hs1, hs2, hs3;
+	hs1.StrAssign(a);
+	hs2.StrAssign(b);
+	hs3.StrAssign(c);
+	hs1.Show();
+	cout << hs1.StrLength() << endl;
+	hs2.Show();
+	hs3.Show();
+	cout << hs2.StrLength() << endl;
+	cout << hs1.Index(hs2) << endl;
+	hs1.SubStr(hs3, 1, 5);
+	hs3.Show();
+	cout << hs2.StrCompare(hs3) << endl;
+	hs3.Concat(hs1, hs2);
+	hs3.Show();
+	hs3.ClearStr();
+	hs3.Show();
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
