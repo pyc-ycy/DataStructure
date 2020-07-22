@@ -20,7 +20,43 @@ public:
 	void Concat(HeapStr s1, HeapStr s2);
 	int Index(HeapStr sub);
 	bool ClearStr();
+	int IndexKMP(HeapStr sub);
 };
+// 模式匹配 KMP 算法
+int HeapStr::IndexKMP(HeapStr sub)
+{
+	int len = sub.length;
+	int* next = new int[len + 1];
+	next[0] = 0;
+	next[1] = 0;
+	int i = 1, j = 0;
+	while (i < len)
+	{
+		if (j == 0 || sub.data[i] == sub.data[j])
+		{
+			++i;
+			++j;
+			next[i] = j;
+		}
+		else
+			j = next[j];
+	}
+	i = 1, j = 1;
+	while (i <= this->length && j <= sub.length)
+	{
+		if (j == 0 || sub.data[i] == sub.data[j])
+		{
+			++i;
+			++j;
+		}
+		else
+			j = next[j];
+	}
+	if (j > sub.length)
+		return i - sub.length;
+	else
+		return 0;
+}
 // 构造串
 HeapStr::HeapStr()
 {

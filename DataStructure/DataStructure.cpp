@@ -23,11 +23,9 @@ int main()
 	cout << hs1.Index(hs2) << endl;
 	hs1.SubStr(hs3, 1, 5);
 	hs3.Show();
-	cout << hs2.StrCompare(hs3) << endl;
+	cout << "1-大于，0-等于，-1-小于" << hs2.StrCompare(hs3) << endl;
 	hs3.Concat(hs1, hs2);
-	hs3.Show();
-	hs3.ClearStr();
-	hs3.Show();
+	cout << "是否匹配成功！" << hs1.IndexKMP(hs2) << endl;
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
