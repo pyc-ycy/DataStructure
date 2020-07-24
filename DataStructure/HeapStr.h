@@ -27,8 +27,10 @@ int HeapStr::IndexKMP(HeapStr sub)
 {
 	int len = sub.length;
 	int* next = new int[len + 1];
-	next[0] = 0;
-	next[1] = 0;
+	for (int k = 0; k <= len; k++)
+	{
+		next[k] = 0;
+	}
 	int i = 1, j = 0;
 	while (i < len)
 	{
@@ -44,7 +46,12 @@ int HeapStr::IndexKMP(HeapStr sub)
 	i = 1, j = 1;
 	while (i <= this->length && j <= sub.length)
 	{
-		if (j == 0 || sub.data[i] == sub.data[j])
+		if (j == 0)
+		{
+			++i;
+			++j;
+		}
+		else if (j != 0 && this->data[i - 1] == sub.data[j - 1])
 		{
 			++i;
 			++j;
@@ -55,7 +62,7 @@ int HeapStr::IndexKMP(HeapStr sub)
 	if (j > sub.length)
 		return i - sub.length;
 	else
-		return 0;
+		return -1;
 }
 // ππ‘Ï¥Æ
 HeapStr::HeapStr()
