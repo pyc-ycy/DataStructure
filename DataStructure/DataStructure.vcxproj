@@ -143,6 +143,7 @@
     <ClCompile Include="SeqStack.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BitTree.h" />
     <ClInclude Include="DNode.h" />
     <ClInclude Include="HeapStr.h" />
     <ClInclude Include="LinkQueue.h" />
