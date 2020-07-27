@@ -7,8 +7,9 @@ typedef struct BitNode
 {
 	int data;
 	BitNode* lchild, * rchild;
+	int ltag = 0, rtag = 0;
 	BitNode* parent;
-}*BTree;
+}*BTree, ThreadNode, * ThreadTree;
 
 // 辅助构造二叉树的链表节点
 typedef struct StackNode
@@ -484,4 +485,121 @@ int Depth(BTree rt)
 	}
 	return deep;
 }
-//=======================================
+//=============层次遍历==========================
+typedef struct QueueNode
+{
+	BTree elem;
+	QueueNode* next;
+};
+typedef struct LinkQueue
+{
+	QueueNode* front, * rear;
+};
+bool initQueue(LinkQueue& q)
+{
+	q.front = q.rear = new QueueNode;
+	q.front->next = NULL;
+	return true;
+}
+void EnQueue(LinkQueue& q, BTree e)
+{
+	QueueNode* s = new QueueNode;
+	s->elem = e;
+	s->next = NULL;
+	q.rear->next = s;
+	q.rear = s;
+}
+bool DeQueue(LinkQueue& q, BTree& e)
+{
+	if (q.front == q.rear) return false;
+	QueueNode* p = q.front->next;
+	e = p->elem;
+	q.front->next = p->next;
+	if (q.rear == p)
+		q.rear = q.front;
+	free(p);
+	return true;
+}
+bool IsEmpty(LinkQueue q)
+{
+	if (q.rear == q.front)
+		return true;
+	return false;
+}
+void vist(BTree e)
+{
+	cout << e->data << " ";
+}
+void LevelOrder(BTree T)
+{
+	LinkQueue Q;
+	initQueue(Q);
+	BTree p;
+	EnQueue(Q, T);
+	while (!IsEmpty(Q))
+	{
+		DeQueue(Q, p);
+		vist(p);
+		if (p->lchild != NULL)
+			EnQueue(Q, p->lchild);
+		if (p->rchild != NULL)
+			EnQueue(Q, p->rchild);
+	}
+}
+//======================
+// 中序线索二叉树
+// 线索化
+void InThread(ThreadTree& p, ThreadTree& pre)
+{
+	if (p != NULL)
+	{
+		InThread(p->lchild, pre);
+		if (p->lchild == NULL)
+		{
+			p->lchild = pre;
+			p->ltag = 1;
+		}
+		if (pre != NULL && pre->rchild == NULL)
+		{
+			pre->rchild = p;
+			pre->rtag = 1;
+		}
+		pre = p;
+		InThread(p->rchild, pre);
+	}
+}
+void CreateInThread(ThreadTree T)
+{
+	ThreadTree pre = NULL;
+	if (T != NULL)
+	{
+		InThread(T, pre);
+		pre->rchild = NULL;
+		pre->rtag = 1;
+	}
+}
+ThreadNode* Firstnode(ThreadNode* p)
+{
+	while (p->ltag == 0)p = p->lchild;
+	return p;
+}
+ThreadNode* Nextnode(ThreadNode* p)
+{
+	if (p->rtag == 0) return Firstnode(p->rchild);
+	else return p->rchild;
+}
+ThreadNode* Prenode(ThreadNode* p)
+{
+	if (p->ltag == 0) return Firstnode(p->lchild);
+	else return p->lchild;
+}
+ThreadNode* Endnode(ThreadNode* p)
+{
+	while (p->rtag == 0)p = p->rchild;
+	return p;
+}
+void Inorder(ThreadNode* T)
+{
+	for (ThreadNode* p = Firstnode(T); p != NULL; p = Nextnode(p))
+		vist(p);
+}

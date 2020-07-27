@@ -43,6 +43,14 @@ int main()
 		int depth = Depth(tree);
 		cout << "该二叉树的深度：" << depth << endl;
 		cout << "该二叉树总节点数目：" << size1 << endl;
+		cout << "层次遍历：" << endl;
+		LevelOrder(tree);
+		cout << endl;
+		cout << "中序遍历创建线索二叉树：" << endl;
+		ThreadTree T = tree;
+		CreateInThread(T);
+		Inorder(T);
+		cout << endl;
 	}
 	else
 	{
