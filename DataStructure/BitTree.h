@@ -70,7 +70,7 @@ void gettop(LinkStack ls, BTree& e)
 //判断栈是否是空栈
 bool stackempty(LinkStack ls)
 {
-	if (ls == NULL)
+	if (ls->next == NULL)
 		return true;
 	return false;
 }
@@ -528,7 +528,9 @@ bool IsEmpty(LinkQueue q)
 }
 void vist(BTree e)
 {
-	cout << e->data << " ";
+	if (e != NULL && e->data != NULL)
+		cout << e->data << " ";
+	return;
 }
 void LevelOrder(BTree T)
 {
@@ -568,6 +570,7 @@ void InThread(ThreadTree& p, ThreadTree& pre)
 		InThread(p->rchild, pre);
 	}
 }
+// 创建线索化二叉树
 void CreateInThread(ThreadTree T)
 {
 	ThreadTree pre = NULL;
@@ -602,4 +605,32 @@ void Inorder(ThreadNode* T)
 {
 	for (ThreadNode* p = Firstnode(T); p != NULL; p = Nextnode(p))
 		vist(p);
+}
+//自上而下、从左到右层次遍历二叉树
+void InvertLevel(BTree bt)
+{
+	LinkStack s = new LStack;
+	LinkQueue Q;
+	BTree p;
+	if (bt != NULL)
+	{
+		InitLS(s);
+		initQueue(Q);
+		EnQueue(Q, bt);
+		while (IsEmpty(Q) == false)
+		{
+			DeQueue(Q, p);
+			push(s, p);
+			if (p->lchild)
+				EnQueue(Q, p->lchild);
+			if (p->rchild)
+				EnQueue(Q, p->rchild);
+		}
+		while (stackempty(s) == false)
+		{
+			pop(s, p);
+			if (p != NULL && p->data != NULL)
+				cout << p->data << " ";
+		}
+	}
 }

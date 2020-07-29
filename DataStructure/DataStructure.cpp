@@ -46,10 +46,8 @@ int main()
 		cout << "层次遍历：" << endl;
 		LevelOrder(tree);
 		cout << endl;
-		cout << "中序遍历创建线索二叉树：" << endl;
-		ThreadTree T = tree;
-		CreateInThread(T);
-		Inorder(T);
+		cout << "自下而上、从右到左层次遍历二叉树：" << endl;
+		InvertLevel(tree);
 		cout << endl;
 	}
 	else
