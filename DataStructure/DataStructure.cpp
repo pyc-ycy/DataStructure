@@ -51,6 +51,8 @@ int main()
 		InvertLevel(tree);
 		cout << endl;
 		cout << "非递归求二叉树深度：" << Btdepth(tree) << endl;
+		cout << "是否是完全二叉树：" << IsComplete(tree) << endl;
+		cout << "该二叉树的双分支节点数目：" << DsonNodes(tree) << endl;
 	}
 	else
 	{
