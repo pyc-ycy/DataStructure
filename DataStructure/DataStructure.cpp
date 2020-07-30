@@ -4,6 +4,7 @@
 #include <iostream>
 #include<string>
 #include "BitTree.h"
+#include"CallBitTree.h"
 using namespace std;
 int main()
 {
@@ -49,6 +50,7 @@ int main()
 		cout << "自下而上、从右到左层次遍历二叉树：" << endl;
 		InvertLevel(tree);
 		cout << endl;
+		cout << "非递归求二叉树深度：" << Btdepth(tree) << endl;
 	}
 	else
 	{

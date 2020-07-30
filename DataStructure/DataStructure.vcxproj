@@ -144,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BitTree.h" />
+    <ClInclude Include="CallBitTree.h" />
     <ClInclude Include="DNode.h" />
     <ClInclude Include="HeapStr.h" />
     <ClInclude Include="LinkQueue.h" />
