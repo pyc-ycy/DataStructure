@@ -79,3 +79,28 @@ int similar(BTree T1, BTree T2)
 		return leftS && rightS;
 	}
 }
+// ÅĞ¶Ï¶ş²æÊ÷ÊÇ·ñÊÇÆ½ºâ¶ş²æÊ÷
+void JugeAVL(BTree T, int& balance, int& h)
+{
+	int bl = 0, br = 0, hl = 0, hr = 0;
+	if (T == NULL)
+	{
+		h = 0;
+		balance = 1;
+	}
+	else if (T->lchild == NULL && T->rchild == NULL)
+	{
+		h = 1;
+		balance = 1;
+	}
+	else
+	{
+		JugeAVL(T->lchild, bl, hl);
+		JugeAVL(T->rchild, br, hr);
+		h = (hl > hr ? hl : hr) + 1;
+		if (abs(hl - hr) < 2)
+			balance = bl && br;
+		else
+			balance = 0;
+	}
+}
