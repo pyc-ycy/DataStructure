@@ -3,14 +3,18 @@
 
 #include <iostream>
 #include<string>
-#include"Graph.h"
+#include "Search.h"
 using namespace std;
 int main()
 {
-	Graph g;
-	g.init(5, 6);
-	g.create();
-	//g.BFSTraverse();
+	int len = 8;
+	int a[] = { 2, 4, 6, 7, 8, 10, 12, 1 };
+	int b[9] = { 0, 2, 5, 3, 15, 4, 8, 2, 10 };
+	int c[] = { 1, 2, 3, 4, 6, 7, 8, 10 };
+	cout << SimpleSqrSearch(a, len, 8) << endl;
+	cout << SeqSearch(b, len, 20) << endl;
+	cout << OrderSearch(c, len, 5) << endl;
+	cout << "二分查找 6:" << BinSearch(c, len, 6) << endl;
 	return 0;
 }
 

@@ -29,3 +29,19 @@ int OrderSearch(int arr[], int len, int keyValue)
 			return -1;
 	}
 }
+// 二分查找，针对有序序列的查找算法
+int BinSearch(int arr[], int len, int keyValue)
+{
+	int low = 0, high = len - 1, mid;
+	while (low <= high)
+	{
+		mid = (low + high) / 2;
+		if (arr[mid] == keyValue)
+			return mid;
+		else if (arr[mid] > keyValue)
+			high = mid - 1;
+		else
+			low = mid + 1;
+	}
+	return -1;
+}
