@@ -10,6 +10,7 @@ int main()
 	Graph g;
 	g.init(5, 6);
 	g.create();
+	//g.BFSTraverse();
 	return 0;
 }
 
