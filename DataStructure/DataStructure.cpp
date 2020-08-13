@@ -11,6 +11,7 @@ int main()
 	int a[] = { -1,49,38,65,97,76,13,27,49 };
 	int len1 = 10;
 	int a1[] = { -1, 49,38,65,97,76,13,27,49,55,04 };
+	int a2[] = { 49,38,65,97,76,13,27,49,55,04 };
 	//InsertSortDirectly(a, len);
 	InsertSortUndirectly(a, len);
 	cout << "折半插入排序：";
@@ -20,6 +21,11 @@ int main()
 	ShellSort(a1, len1);
 	for (int i = 1; i <= len1; i++)
 		cout << a1[i] << " ";
+	BubbleSort(a2, len1);
+	cout << endl << "冒泡排序：";
+	for (int i = 0; i < len1; i++)
+		cout << a2[i] << " ";
+
 	return 0;
 }
 

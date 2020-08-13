@@ -54,3 +54,25 @@ void ShellSort(int a[], int len)
 		}
 	}
 }
+// 冒泡排序
+void BubbleSort(int a[], int len)
+{
+	// 标志是否发生交换
+	bool flag = false;
+	for (int i = 0; i < len - 1; i++)
+	{
+		flag = false;
+		for (int j = len - 1; j > i; j--)
+		{
+			if (a[j - 1] > a[j])
+			{
+				int t = a[j - 1];
+				a[j - 1] = a[j];
+				a[j] = t;
+			}
+			flag = true;
+		}
+		if (flag == false)
+			return;
+	}
+}
