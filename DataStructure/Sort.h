@@ -36,3 +36,21 @@ void InsertSortUndirectly(int a[], int len)
 		a[high + 1] = a[0];
 	}
 }
+// 希尔排序
+void ShellSort(int a[], int len)
+{
+	int dk, i, j;
+	for (dk = len / 2; dk >= 1; dk = dk / 2) // dk 表示步长
+	{
+		for (i = dk + 1; i <= len; ++i)
+		{
+			if (a[i] < a[i - dk]) // 将 a[i] 插入有序增量子表
+			{
+				a[0] = a[i];
+				for (j = i - dk; j > 0 && a[0] < a[j]; j -= dk)
+					a[j + dk] = a[j];   //记录后移，查找插入位置
+				a[j + dk] = a[0];
+			}
+		}
+	}
+}

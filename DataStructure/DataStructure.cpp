@@ -9,10 +9,17 @@ int main()
 {
 	int len = 8;
 	int a[] = { -1,49,38,65,97,76,13,27,49 };
+	int len1 = 10;
+	int a1[] = { -1, 49,38,65,97,76,13,27,49,55,04 };
 	//InsertSortDirectly(a, len);
 	InsertSortUndirectly(a, len);
+	cout << "折半插入排序：";
 	for (int i = 1; i <= len; i++)
 		cout << a[i] << " ";
+	cout << endl << "希尔排序：";
+	ShellSort(a1, len1);
+	for (int i = 1; i <= len1; i++)
+		cout << a1[i] << " ";
 	return 0;
 }
 
