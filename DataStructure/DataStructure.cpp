@@ -3,18 +3,15 @@
 
 #include <iostream>
 #include<string>
-#include "Search.h"
+#include "Sort.h"
 using namespace std;
 int main()
 {
 	int len = 8;
-	int a[] = { 2, 4, 6, 7, 8, 10, 12, 1 };
-	int b[9] = { 0, 2, 5, 3, 15, 4, 8, 2, 10 };
-	int c[] = { 1, 2, 3, 4, 6, 7, 8, 10 };
-	cout << SimpleSqrSearch(a, len, 8) << endl;
-	cout << SeqSearch(b, len, 20) << endl;
-	cout << OrderSearch(c, len, 5) << endl;
-	cout << "二分查找 6:" << BinSearch(c, len, 6) << endl;
+	int a[] = { -1,49,38,65,97,76,13,27,49 };
+	InsertSortDirectly(a, len);
+	for (int i = 1; i <= len; i++)
+		cout << a[i] << " ";
 	return 0;
 }
 
