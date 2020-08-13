@@ -9,7 +9,8 @@ int main()
 {
 	int len = 8;
 	int a[] = { -1,49,38,65,97,76,13,27,49 };
-	InsertSortDirectly(a, len);
+	//InsertSortDirectly(a, len);
+	InsertSortUndirectly(a, len);
 	for (int i = 1; i <= len; i++)
 		cout << a[i] << " ";
 	return 0;
