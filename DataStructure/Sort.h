@@ -202,3 +202,75 @@ void SelectSort(int a[], int n)
 		}
 	}
 }
+//大堆根
+// 堆排序：①调整
+void MaxHeapAdjust(int a[], int k, int len)
+{
+	a[0] = a[k];
+	int i;
+	for (i = 2 * k; i <= len; i *= 2)
+	{
+		if (i < len&& a[i] < a[i + 1])
+			i++;
+		if (a[0] >= a[i])break;
+		else {
+			a[k] = a[i];
+			k = i;
+		}
+	}
+	a[k] = a[0];
+}
+//堆排序：②构建初始堆
+void CreateMaxHeap(int a[], int len)
+{
+	for (int i = len / 2; i > 0; i--)
+		MaxHeapAdjust(a, i, len);
+}
+//堆排序：③排序
+void MaxHeapSort(int a[], int len)
+{
+	CreateMaxHeap(a, len);
+	for (int i = len; i > 1; i--)
+	{
+		int t = a[i];
+		a[i] = a[1];
+		a[i] = t;
+		MaxHeapAdjust(a, 1, i - 1);
+	}
+}
+// 小堆根
+// 调整
+void MinHeapAdjust(int a[], int k, int len)
+{
+	a[0] = a[k];
+	int i;
+	for (i = 2 * k; i <= len; i *= 2)
+	{
+		if (i < len&& a[i + 1] < a[i])
+			i++;
+		if (a[i] >= a[0])break;
+		else {
+			a[k] = a[i];
+			k = i;
+		}
+	}
+	a[k] = a[0];
+}
+// 构造初始堆
+void CreateMinHeap(int a[], int len)
+{
+	for (int i = len / 2; i > 0; i--)
+		MinHeapAdjust(a, i, len);
+}
+// 小堆根排序
+void MinHeapSort(int a[], int len)
+{
+	CreateMinHeap(a, len);
+	for (int i = len; i > 1; i--)
+	{
+		int t = a[i];
+		a[i] = a[1];
+		a[i] = t;
+		MinHeapAdjust(a, 1, i - 1);
+	}
+}

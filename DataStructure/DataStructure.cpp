@@ -14,6 +14,7 @@ int main()
 	int a2[] = { 49,38,65,97,76,13,27,49,55,04 };
 	int a3[] = { 49,38,4,65,97,76,6,8,13,27,49, 10 };
 	int a4[] = { 49,38,4,65,97,76,6,8,13,27,49, 10 };
+	int a5[] = { -1, 49,38,65,97,76,13,27,49,55,04 };
 	//InsertSortDirectly(a, len);
 	InsertSortUndirectly(a, len);
 	cout << "折半插入排序：";
@@ -35,7 +36,15 @@ int main()
 	SelectSort(a4, 12);
 	for (int i = 0; i < 12; i++)
 		cout << a4[i] << " ";
-
+	cout << endl << "堆排序·大堆根：";
+	MaxHeapSort(a5, 10);
+	for (int i = 1; i <= 10; i++)
+		cout << a5[i] << " ";
+	int a6[] = { -1, 49,38,65,97,76,13,27,49,55,04 };
+	cout << endl << "小堆根排序：";
+	MinHeapSort(a6, 10);
+	for (int i = 1; i <= 10; i++)
+		cout << a6[i] << " ";
 	return 0;
 }
 
