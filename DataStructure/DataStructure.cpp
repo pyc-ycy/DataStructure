@@ -13,6 +13,7 @@ int main()
 	int a1[] = { -1, 49,38,65,97,76,13,27,49,55,04 };
 	int a2[] = { 49,38,65,97,76,13,27,49,55,04 };
 	int a3[] = { 49,38,4,65,97,76,6,8,13,27,49, 10 };
+	int a4[] = { 49,38,4,65,97,76,6,8,13,27,49, 10 };
 	//InsertSortDirectly(a, len);
 	InsertSortUndirectly(a, len);
 	cout << "折半插入排序：";
@@ -30,10 +31,11 @@ int main()
 	QuickSort2(a3, 0, 11);
 	for (int i = 0; i < 12; i++)
 		cout << a3[i] << " ";
-	cout << endl << "将奇数都移动到偶数前面：";
-	Move(a3, 12);
+	cout << endl << "直接选择排序：";
+	SelectSort(a4, 12);
 	for (int i = 0; i < 12; i++)
-		cout << a3[i] << " ";
+		cout << a4[i] << " ";
+
 	return 0;
 }
 
