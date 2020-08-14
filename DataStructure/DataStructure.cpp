@@ -12,7 +12,7 @@ int main()
 	int len1 = 10;
 	int a1[] = { -1, 49,38,65,97,76,13,27,49,55,04 };
 	int a2[] = { 49,38,65,97,76,13,27,49,55,04 };
-	int a3[] = { 49,38,65,97,76,13,27,49 };
+	int a3[] = { 49,38,4,65,97,76,6,8,13,27,49, 10 };
 	//InsertSortDirectly(a, len);
 	InsertSortUndirectly(a, len);
 	cout << "折半插入排序：";
@@ -22,13 +22,17 @@ int main()
 	ShellSort(a1, len1);
 	for (int i = 1; i <= len1; i++)
 		cout << a1[i] << " ";
-	BubbleSort(a2, len1);
+	DoubleBubbleSort(a2, len1);
 	cout << endl << "冒泡排序：";
 	for (int i = 0; i < len1; i++)
 		cout << a2[i] << " ";
 	cout << endl << "快速排序：";
-	QuickSort(a3, 0, 7);
-	for (int i = 0; i < 8; i++)
+	QuickSort2(a3, 0, 11);
+	for (int i = 0; i < 12; i++)
+		cout << a3[i] << " ";
+	cout << endl << "将奇数都移动到偶数前面：";
+	Move(a3, 12);
+	for (int i = 0; i < 12; i++)
 		cout << a3[i] << " ";
 	return 0;
 }
