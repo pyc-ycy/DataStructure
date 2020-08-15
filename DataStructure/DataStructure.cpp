@@ -36,13 +36,13 @@ int main()
 	SelectSort(a4, 12);
 	for (int i = 0; i < 12; i++)
 		cout << a4[i] << " ";
-	cout << endl << "堆排序·大堆根：";
-	MaxHeapSort(a5, 10);
+	cout << endl << "小堆根排序：";
+	MinHeapSort(a5, 10);
 	for (int i = 1; i <= 10; i++)
 		cout << a5[i] << " ";
 	int a6[] = { -1, 49,38,65,97,76,13,27,49,55,04 };
-	cout << endl << "小堆根排序：";
-	MinHeapSort(a6, 10);
+	cout << endl << "大堆根排序：";
+	MaxHeapSort(a6, 10);
 	for (int i = 1; i <= 10; i++)
 		cout << a6[i] << " ";
 	return 0;
