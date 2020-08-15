@@ -45,6 +45,11 @@ int main()
 	MaxHeapSort(a6, 10);
 	for (int i = 1; i <= 10; i++)
 		cout << a6[i] << " ";
+	int a7[] = { 49,38,65,97,76,13,27 };
+	cout << endl << "二路归并排序：";
+	MergeSort(a7, 0, 6);
+	for (int i = 0; i < 7; i++)
+		cout << a7[i] << " ";
 	return 0;
 }
 
